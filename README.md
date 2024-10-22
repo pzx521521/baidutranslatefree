@@ -99,8 +99,8 @@ curl -v 'https://fanyi.baidu.com/basetrans' \
 + 比如翻译`hello`,Sign就是对`hello`的计算
 + 参考代码如下:
   `https://github.com/Kr1s77/awesome-python-login-model`
-  文件中的`translate.js`就是从他那里拿的,trans.py,
-  修改最新的BAIDUID和token之后还是能用的
+  文件中的`translate.js`就是从他那里拿的,
+  `trans.py` 修改最新的BAIDUID和token之后还是能用的
 + golang中使用的是[OTTO](github.com/robertkrimen/otto)解析json,本来想让chatGPT直接把js转成golang的,
   但是他转的有问题(calsign_chatgpt_err.go),懒得一点一点跟.放弃,直接使用原生js
 + 使用otto解析的时候会有问题,因为js中`translate.js`中会有一些逻辑永远用不到,在这些逻辑中会有未定义的函数,
@@ -109,5 +109,4 @@ curl -v 'https://fanyi.baidu.com/basetrans' \
   golang中通过修改js代码来解决这个问题
 
 ### todo
-目前没有写python版本的想法,因为[作者](https://github.com/Kr1s77/awesome-python-login-model)
-并不是一个单独的项目,所以没办法pr
+目前没有写python版本的想法,因为[作者](https://github.com/Kr1s77/awesome-python-login-model)并不是一个单独的项目,所以没办法pr
