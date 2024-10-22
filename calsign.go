@@ -2,7 +2,6 @@ package baidutranslatefree
 
 import (
 	"github.com/robertkrimen/otto"
-	"os"
 )
 
 // Signer 结构体用于处理签名计算
@@ -14,14 +13,8 @@ type Signer struct {
 func NewSigner() (*Signer, error) {
 	vm := otto.New()
 
-	// 读取 JavaScript 文件
-	jsCode, err := os.ReadFile("./translate.js")
-	if err != nil {
-		return nil, err
-	}
-
 	// 执行 JavaScript 代码
-	if _, err := vm.Run(string(jsCode)); err != nil {
+	if _, err := vm.Run(JS); err != nil {
 		return nil, err
 	}
 
