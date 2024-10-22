@@ -9,7 +9,7 @@ go get github.com/pzx521521/baidutranslatefree
 
 
 Example usage:
-```
+```golang
 package main
 
 import (
@@ -34,22 +34,17 @@ All language codes can be found here:
 ## 破解过程分享
 ### 前因说明
 + 目前大部分google接口都是用的`https://translate.google.com/translate_a/single`
-
     但他总是弹验证(google的reCAPTCHA),
     因为国内的原因,ip经常改变,所以经常弹验证.导致用不了
 + 发现  `https://translate.google.com/m` 是可以用的
-
     python版本[deep-translator](https://github.com/nidhaloff/deep-translator)
 
 + 看了一下,并没有golang版的(因为想二进制在arm上跑),所以就写了一个
-
     [googletranslatefree](https://github.com/pzx521521/googletranslatefree)
 
 + 写完了,想到很多人没法正常访问google, 忽然想看下buidu的
-
     电脑版的有点麻烦，使用的是**手机版**的接口分析
 + 为什么要写golang版本
-  
   想在arm芯片/手机 上以二进制包的方式运行
 
 ### CURL
@@ -83,6 +78,7 @@ curl -v 'https://fanyi.baidu.com/basetrans' \
       token: '3079487ebfc9fc012ef8dbcc18894a7d',
       langList: {
   ```
+
 + 如果不携带BAIDUID,会返回
   `fanyi.baidu.com/ line 21`
   ```js
@@ -98,6 +94,7 @@ curl -v 'https://fanyi.baidu.com/basetrans' \
       location.reload();
   }
   ```
+  
 ### Sign 计算
 + 比如翻译`hello`,Sign就是对`hello`的计算
 + 参考代码如下:
