@@ -24,7 +24,7 @@ func NewSigner() (*Signer, error) {
 // CalSign 计算签名
 func (s *Signer) CalSign(text string) (string, error) {
 	// 调用 JavaScript 函数 a
-	value, err := s.vm.Call("a", nil, text)
+	value, err := s.vm.Call("token", nil, text)
 	if err != nil {
 		return "", err
 	}

@@ -42,14 +42,14 @@ func (t *BaiduTranslater) SetFromTo(from, to string) error {
 }
 
 // TransPort 翻译
-func (t *BaiduTranslater) TransPort(input string) (text string, err error) {
+func (t *BaiduTranslater) Translate(input string) (text string, err error) {
 	client := &http.Client{}
 	signature, err := t.Signer.CalSign(input)
 	if err != nil {
 		return text, err
 	}
 	param := fmt.Sprintf("query=%s&from=%s&to=%s&token=%s&sign=%s",
-		url.QueryEscape(input),
+		url.PathEscape(input),
 		t.From,
 		t.To,
 		t.Token,

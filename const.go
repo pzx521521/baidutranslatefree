@@ -94,42 +94,37 @@ var LangList = map[string]string{
 	"cht":   "中文繁体",
 }
 
-const JS = `var i = "320305.131321201"
-
-function n(r, o) {
+const JS = `
+var _gtk = "320305.131321201"
+function a(r, o) {
     for (var t = 0; t < o.length - 2; t += 3) {
-        var e = o.charAt(t + 2);
-        e = e >= "a" ? e.charCodeAt(0) - 87 : Number(e),
-            e = "+" === o.charAt(t + 1) ? r >>> e : r << e,
-            r = "+" === o.charAt(t) ? r + e & 4294967295 : r ^ e
+        var a = o.charAt(t + 2);
+        a = a >= "a" ? a.charCodeAt(0) - 87 : Number(a),
+        a = "+" === o.charAt(t + 1) ? r >>> a: r << a,
+        r = "+" === o.charAt(t) ? r + a & 4294967295 : r ^ a
     }
     return r
 }
+var C = null;
+function token(r) {
+    var o = r.length;
+    o > 30 && (r = "" + r.substr(0, 10) + r.substr(Math.floor(o / 2) - 5, 10) + r.substring(r.length, r.length - 10));
+    var t = void 0,
+    t = null !== C ? C: (C = _gtk || "") || "";
+    for (var e = t.split("."), h = Number(e[0]) || 0, i = Number(e[1]) || 0, d = [], f = 0, g = 0; g < r.length; g++) {
+        var m = r.charCodeAt(g);
+        128 > m ? d[f++] = m: (2048 > m ? d[f++] = m >> 6 | 192 : (55296 === (64512 & m) && g + 1 < r.length && 56320 === (64512 & r.charCodeAt(g + 1)) ? (m = 65536 + ((1023 & m) << 10) + (1023 & r.charCodeAt(++g)), d[f++] = m >> 18 | 240, d[f++] = m >> 12 & 63 | 128) : d[f++] = m >> 12 | 224, d[f++] = m >> 6 & 63 | 128), d[f++] = 63 & m | 128)
+    }
+    for (var S = h,
+    u = "+-a^+6",
+    l = "+-3^+b+-f",
+    s = 0; s < d.length; s++) S += d[s],
+    S = a(S, u);
 
-function a(r) {
-    var t = r.match(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g);
-    if (null === t) {
-        var a = r.length;
-        a > 30 && (r = "" + r.substr(0, 10) + r.substr(Math.floor(a / 2) - 5, 10) + r.substr(-10, 10))
-    } else {
-    }
-    var l = void 0
-        , d = "" + String.fromCharCode(103) + String.fromCharCode(116) + String.fromCharCode(107);
-    l = null !== i ? i : (i = o.common[d] || "") || "";
-    for (var m = l.split("."), S = Number(m[0]) || 0, s = Number(m[1]) || 0, c = [], v = 0, F = 0; F < r.length; F++) {
-        var p = r.charCodeAt(F);
-        128 > p ? c[v++] = p : (2048 > p ? c[v++] = p >> 6 | 192 : (55296 === (64512 & p) && F + 1 < r.length && 56320 === (64512 & r.charCodeAt(F + 1)) ? (p = 65536 + ((1023 & p) << 10) + (1023 & r.charCodeAt(++F)),
-            c[v++] = p >> 18 | 240,
-            c[v++] = p >> 12 & 63 | 128) : c[v++] = p >> 12 | 224,
-            c[v++] = p >> 6 & 63 | 128),
-            c[v++] = 63 & p | 128)
-    }
-    for (var w = S, A = "" + String.fromCharCode(43) + String.fromCharCode(45) + String.fromCharCode(97) + ("" + String.fromCharCode(94) + String.fromCharCode(43) + String.fromCharCode(54)), b = "" + String.fromCharCode(43) + String.fromCharCode(45) + String.fromCharCode(51) + ("" + String.fromCharCode(94) + String.fromCharCode(43) + String.fromCharCode(98)) + ("" + String.fromCharCode(43) + String.fromCharCode(45) + String.fromCharCode(102)), D = 0; D < c.length; D++)
-        w += c[D],
-            w = n(w, A);
-    return w = n(w, b),
-        w ^= s,
-    0 > w && (w = (2147483647 & w) + 2147483648),
-        w %= 1e6,
-    w.toString() + "." + (w ^ S)
-}`
+    return S = a(S, l),
+    S ^= i,
+    0 > S && (S = (2147483647 & S) + 2147483648),
+    S %= 1e6,
+    S.toString() + "." + (S ^ h)
+}
+`

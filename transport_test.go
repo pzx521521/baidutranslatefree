@@ -7,10 +7,11 @@ import (
 )
 
 func TestTransPort(t *testing.T) {
-	input := "Hello,World!"
 	translater, _ := NewBaiduTranslater()
 	translater.SetFromTo("en", "zh")
-	text, _ := translater.TransPort(input)
+	text, _ := translater.Translate("Hello,World!")
+	fmt.Printf("%v\n", text)
+	text, _ = translater.Translate("a cartoon of a woman with blue hair")
 	fmt.Printf("%v\n", text)
 }
 
