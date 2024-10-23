@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func TestTransPort(t *testing.T) {
+func TestTranslate(t *testing.T) {
 	translater, _ := NewBaiduTranslater()
 	translater.SetFromTo("en", "zh")
 	text, _ := translater.Translate("Hello,World!")

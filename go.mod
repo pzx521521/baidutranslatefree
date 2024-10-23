@@ -2,7 +2,9 @@ module github.com/pzx521521/baidutranslatefree
 
 go 1.23.1
 
-require github.com/robertkrimen/otto v0.4.0
+require (
+	github.com/robertkrimen/otto v0.4.0
+)
 
 require (
 	golang.org/x/text v0.4.0 // indirect
